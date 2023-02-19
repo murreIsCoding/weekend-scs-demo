@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    function:
+      definition: executeTask;notifyResult
+    stream:
+      kafka:
+        binder:
+          defaultBrokerPort: 29092
+      bindings:
+        executeTask-in-0:
+          destination: task-queue
+        executeTask-out-0:
+          destination: notify-queue
+        notifyResult-in-0:
+          destination: notify-queue
